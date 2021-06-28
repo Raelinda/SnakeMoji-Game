@@ -19,23 +19,25 @@
     </header>
    
     
-        <div class="buttons">
-            <div class="buttons__top">
-                <div id="upBtn" class="directional-btn">Up</div>
+        <div class="flex">
+            <div class="buttons">
+                <div class="buttons__top">
+                    <div id="upBtn" class="directional-btn"><i class="fas fa-caret-up"></i></div>
+                </div>
+                <div class="buttons__middle">
+                    <div id="leftBtn" class="directional-btn"><i class="fas fa-caret-left"></i></div>
+                    <div id="startBtn">Go for it!</div>
+                    <div id="rightBtn" class="directional-btn"><i class="fas fa-caret-right"></i></div>
+                </div>
+                <div class="buttons__bottom">
+                    <div id="downBtn" class="directional-btn"><i class="fas fa-caret-down"></i></div>
+                </div>
             </div>
-            <div class="buttons__middle">
-                <div id="leftBtn" class="directional-btn">left</div>
-                <div id="startBtn">Go for it!</div>
-                <div id="rightBtn" class="directional-btn">right</div>
+            <div class="game">
+                <div class="grid">
+                </div>
+                <div id="scoreboard">Score: <span id="score">0</span></div>
             </div>
-            <div class="buttons__bottom">
-                <div id="downBtn" class="directional-btn">down</div>
-            </div>
-        </div>
-        <div class="game">
-            <div class="grid">
-            </div>
-            <div class="scoreboard">Score: <span id="score">0</span></div>
         </div>
         <a class="attributions" href="https://www.vecteezy.com/free-vector/rainbow">Rainbow Vectors by Vecteezy</a>
         <script src="snakeMoji1.js"></script>

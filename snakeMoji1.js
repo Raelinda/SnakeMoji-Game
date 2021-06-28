@@ -1,9 +1,15 @@
 // store DOM-grabs in variables
 const grid = document.querySelector('.grid')
+const scoreBoard = document.getElementById('scoreboard')
 const scoreDisplay = document.getElementById('score')
 const startBtn = document.getElementById('startBtn')
+const upBtn = document.getElementById('upBtn')
+const downBtn = document.getElementById('downBtn')
+const leftBtn = document.getElementById('leftBtn')
+const rightBtn = document.getElementById('rightBtn')
+const overlay = document.getElementById('overlay')
 
-//create arrays
+//grid and snake arrays
 const squares = []
 let currentSnake = [2, 1, 0]
 
@@ -12,12 +18,12 @@ const width = 10
 
 //changing variables
 let direction = 1
-let appleIndex = 0
+let emojiIndex = 0
 let timerId = 0
 let score = 0
 let snakeSpeed = 800
 let speedIncrease = 0.9
-
+console.log(score)
 // create 100 divs/style/push into squares array
 function createGrid() {
     for (let i = 0; i < width * width; i++) {
@@ -36,12 +42,13 @@ currentSnake.forEach(index => {
     // squares[index].textContent = '☹️'
 
 })
-
+// start/restart game
 function startGame() {
     clearInterval(timerId)
     direction = 1
     score = 0
-    scoreDisplay.textContent = 0
+    score.textContent = score
+    scoreBoard.textContent = "Score: "
     currentSnake.forEach(index => {
         squares[index].classList.remove('snake')
     })
@@ -51,9 +58,9 @@ function startGame() {
         squares[index].classList.add('snake')
     })
 
-    squares[appleIndex].classList.remove('apple')
-    squares[appleIndex].textContent = ''
-    generateApple()
+    squares[emojiIndex].classList.remove('emoji')
+    squares[emojiIndex].textContent = ''
+    generateEmoji()
 
     snakeSpeed = 1000
     timerId = setInterval(move, snakeSpeed)
@@ -61,21 +68,23 @@ function startGame() {
 startBtn.addEventListener('click', startGame)
 
 
-generateApple()
+generateEmoji()
 
 // clearInterval(timerId)
 
 //MOVE SNAKE
 function move() {
     const head = currentSnake[0]
-    // stop snake if it hits wall or overlaps
+    // stop snake if snake hits wall or overlaps self
     if ((head - width <= 0 && direction === -width) ||
         (head % width === 9 && direction === 1) ||
         (head + width > width * width && direction === width) ||
         (head % width === 0 && direction === -1) ||
         (squares[head + direction].classList.contains('snake'))
     ) {
+        startBtn.textContent = "Go again!"
         return clearInterval(timerId)
+        
     }
     //remove from tail/add to head
     const tail = currentSnake.pop()
@@ -83,29 +92,35 @@ function move() {
     squares[head + direction].classList.add('snake')
     currentSnake.unshift(head + direction)
 
-    //if snake eats apple
-    if (squares[head + direction].classList.contains('apple')) {
+    //if snake eats emoji
+    if (squares[head + direction].classList.contains('emoji')) {
         squares[tail].classList.add('snake')
         currentSnake.push(tail)
         // currentSnake.push(tail)
         score++
         scoreDisplay.textContent = score
-        squares[appleIndex].classList.remove('apple')
-        squares[appleIndex].textContent = ''
-        generateApple()
+        squares[emojiIndex].classList.remove('emoji')
+        squares[emojiIndex].textContent = ' '
+        generateEmoji()
         clearInterval(timerId)
         snakeSpeed = snakeSpeed * speedIncrease
         timerId = setInterval(move, snakeSpeed)
     }
+    // result of winning game
     if (score === 12){
         clearInterval(timerId)
+        scoreBoard.textContent = ""
         scoreDisplay.textContent = "YOU WON!!!!!"
+        startBtn.textContent = "Go again!"
+        overlay.classList.remove('half-opacity')
+        overlay.classList.add('no-opacity')
+
     }
 
 }
 move()
 
-//control snake direction
+//control snake direction with keyboard
 document.addEventListener('keyup', e => {
     switch (e.key) {
         case 'ArrowUp':
@@ -122,9 +137,22 @@ document.addEventListener('keyup', e => {
             break
     }
 })
+// control snake direction with buttons
+upBtn.addEventListener('click', () =>{
+    direction = -width
+})
+rightBtn.addEventListener('click', () =>{
+    direction = 1
+})
+downBtn.addEventListener('click', () =>{
+    direction = width
+})
+leftBtn.addEventListener('click', () =>{
+    direction = -1
+})
 
-//generate random apples
-function generateApple() {
+//generate random emojis
+function generateEmoji() {
     switch (score) {
         case 0:
             emoji = '😢'
@@ -163,9 +191,9 @@ function generateApple() {
             emoji = '🤩'
     }
     do {
-        appleIndex = Math.floor(Math.random() * squares.length)
+        emojiIndex = Math.floor(Math.random() * squares.length)
     }
-    while (squares[appleIndex].classList.contains('snake'))
-    squares[appleIndex].classList.add('apple')
-    squares[appleIndex].textContent = emoji
+    while (squares[emojiIndex].classList.contains('snake'))
+    squares[emojiIndex].classList.add('emoji')
+    squares[emojiIndex].textContent = emoji
 }

@@ -145,25 +145,29 @@ body {
 }
 
 .half-opacity {
-  opacity: .5
+  opacity: .6
 }
 
 .no-opacity {
   opacity: 0;
 }
-
+/* layout */
+.flex {
+  display: flex;
+  flex-direction: column;
+}
 /* Header */
 header {
   background: var(--happy-aqua-alt);
   border-radius: 10px;
-  margin: .5rem auto 0;
+  margin: .75rem auto 0;
   padding: .5em 5vmin;
   width: 80vmin;
 }
 
 
 h1 {
-  font-size: 12vmin;
+  font-size: 10vmin;
 }
 
 .header__title--accent {
@@ -174,7 +178,7 @@ h1 {
 
 h2 {
   color: var(--emoji-yellow);
-  font-size: 5vmin;
+  font-size: 4vmin;
   font-style: italic;
   font-weight: 900;
 }
@@ -187,7 +191,6 @@ h2 {
   align-items: center;
   justify-content: center;
 
-  font-size: 2vmin;
   margin: 3vmin auto;
 }
 
@@ -198,30 +201,37 @@ h2 {
 }
 
 #startBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background: var(--emoji-yellow);
   border-radius: 10px;
-  border: 2px solid var(--hot-pink);
+  border: 3px solid var(--hot-pink);
   color: var(--hot-pink);
-  font-size: 3vmin;
+  font-size: 4vmin;
   margin: .25em;
-  padding: 1em .75em;
+  padding: 0 1em;
+  height: 10vmin;
 }
 
 .directional-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   background: var(--hot-pink);
   border-radius: 10px;
-  border: 2px solid var(--happy-aqua-alt);
+  border: 3px solid var(--happy-aqua-alt);
   color: var(--emoji-yellow);
-  height: 50px;
-  width: 50px;
+  font-size: 10vmin;
+  height: 10vmin;
+  width: 10vmin;
 }
+
 #startBtn:hover,
 .directional-btn:hover {
-  border: 2px solid white;
+  border: 3px solid white;
   box-shadow: 0 0 6px 1px hsla(360, 100%, 100%, .5) inset;
   color: white;
   cursor: pointer;
@@ -233,7 +243,7 @@ h2 {
   background: var(--happy-aqua-alt);
   border-radius: 10px;
   margin: 0 auto 2vmin;
-  padding: 5vmin;
+  padding: 5vmin 5vmin 3vmin;
   width: 80vmin;
 }
 
@@ -262,8 +272,8 @@ h2 {
   background: var(--happy-aqua);
 }
 
-/* apples are emojis */
-.apple {
+/* emojis */
+.emoji {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -271,13 +281,65 @@ h2 {
   font-size: 6vmin;
 }
 
-.scoreboard {
-  font-size: 6vmin
-  margin-top: .5em;
+#scoreboard {
+  font-size: 6vmin; 
+  margin-top: .25em;
 }
 
 #score {
   color: var(--emoji-yellow);
+}
+/* Media query - Tablet */
+@media (min-width: 37.5em) {
+  h1{
+    font-size: 6vmin;
+  }
+  h2 {
+    font-size: 3vmin;
+  }
+ 
+}
+
+
+/* Media query - Desktop */
+@media (min-width: 43.75em) {
+  .flex {
+    flex-direction: row;
+    margin-top: 3rem;
+  }
+  header {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  h1 {
+    font-size: 9vmin;
+  }
+  h2 {
+    font-size: 4vmin;
+    margin-left: 4em;
+  }
+  #startBtn {
+    font-size: 3vmin;
+  }
+  .game {
+    margin: 0 auto 2vmin;
+  padding: 2vmin;
+  width: 65vmin;
+  }
+
+  .grid {
+    width: 60vmin;
+    height: 60vmin;
+  }
+  .square {
+    width: 6vmin;
+    height: 6vmin;
+  }
+  .scoreboard {
+    font-size: 4vmin;
+  }
 }
 
 /* design credit for background rainbow pattern */
