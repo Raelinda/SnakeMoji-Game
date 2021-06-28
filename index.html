@@ -6,33 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="#">
+    <script src="https://kit.fontawesome.com/9bbedcefb2.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
 </head>
 
 <body>
-<div id="overlay" class="half-opacity"></div>
+    <div id="overlay" class="half-opacity"></div>
+    <header>
+        <h1>Snake<span class="header__title--accent">Moji!</span></h1>
+        <h2>Catch a better mood</h2>
+    </header>
+   
     
-           
-                <div class="container">
-                    <header>
-                        <h1>Snake<span class="header__title--accent">Moji!</span></h1>
-                        <p id="message">Catch a better mood</p>
-                    </header>
-                        <div class="game-tools">
-                            <button id="startBtn">Go for it!</button>
-                            <h2>Score: <span id="score">0</span></h2>
-                        </div>
-                </div>
-                   
-                    <div class="container">
-                    <div class="grid">
-                    </div>
-                
+        <div class="buttons">
+            <div class="buttons__top">
+                <div id="upBtn" class="directional-btn">Up</div>
             </div>
-            <a class="attributions" href="https://www.vecteezy.com/free-vector/rainbow">Rainbow Vectors by Vecteezy</a>
-            <script src="snakeMoji1.js"></script>
-</div>
+            <div class="buttons__middle">
+                <div id="leftBtn" class="directional-btn">left</div>
+                <div id="startBtn">Go for it!</div>
+                <div id="rightBtn" class="directional-btn">right</div>
+            </div>
+            <div class="buttons__bottom">
+                <div id="downBtn" class="directional-btn">down</div>
+            </div>
+        </div>
+        <div class="game">
+            <div class="grid">
+            </div>
+            <div class="scoreboard">Score: <span id="score">0</span></div>
+        </div>
+        <a class="attributions" href="https://www.vecteezy.com/free-vector/rainbow">Rainbow Vectors by Vecteezy</a>
+        <script src="snakeMoji1.js"></script>
+    
 
 </body>
 

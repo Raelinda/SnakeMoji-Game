@@ -127,7 +127,7 @@ document.addEventListener('keyup', e => {
 function generateApple() {
     switch (score) {
         case 0:
-            emoji = '🙁'
+            emoji = '😢'
             break
         case 1:
             emoji = '😕'
