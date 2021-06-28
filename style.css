@@ -154,9 +154,9 @@ body {
 
 /* Header */
 header {
-  margin: .5rem auto 0;
   background: var(--happy-aqua-alt);
   border-radius: 10px;
+  margin: .5rem auto 0;
   padding: .5em 5vmin;
   width: 80vmin;
 }
@@ -167,16 +167,16 @@ h1 {
 }
 
 .header__title--accent {
+  color: var(--emoji-yellow);
   font-style: italic;
   font-weight: 900;
-  color: var(--emoji-yellow);
 }
 
 h2 {
+  color: var(--emoji-yellow);
   font-size: 5vmin;
   font-style: italic;
   font-weight: 900;
-  color: var(--emoji-yellow);
 }
 
 /* Buttons */
@@ -186,6 +186,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   font-size: 2vmin;
   margin: 3vmin auto;
 }
@@ -198,87 +199,90 @@ h2 {
 
 #startBtn {
   background: var(--emoji-yellow);
-  padding: 1em .75em;
-  border: 2px solid var(--hot-pink);
   border-radius: 10px;
-  font-size: 3vmin;
+  border: 2px solid var(--hot-pink);
   color: var(--hot-pink);
+  font-size: 3vmin;
   margin: .25em;
-}
-
-#startBtn:hover,
-.directional-btn:hover,
-.directional-btn:hover {
-  cursor: pointer;
-  border: 2px solid white;
-  color: white;
-  box-shadow: 0 0 6px 1px hsla(360, 100%, 100%, .5) inset;
+  padding: 1em .75em;
 }
 
 .directional-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  color: var(--emoji-yellow);
+  
   background: var(--hot-pink);
+  border-radius: 10px;
   border: 2px solid var(--happy-aqua-alt);
+  color: var(--emoji-yellow);
   height: 50px;
   width: 50px;
 }
+#startBtn:hover,
+.directional-btn:hover {
+  border: 2px solid white;
+  box-shadow: 0 0 6px 1px hsla(360, 100%, 100%, .5) inset;
+  color: white;
+  cursor: pointer;
+}
+
 
 /* Game */
 .game {
   background: var(--happy-aqua-alt);
-  margin: 0 auto 2vmin;
-  width: 80vmin;
-  padding: 5vmin;
   border-radius: 10px;
+  margin: 0 auto 2vmin;
+  padding: 5vmin;
+  width: 80vmin;
 }
 
 .grid {
   display: flex;
   flex-wrap: wrap;
+
   border-radius: 10px;
-  width: 70vmin;
-  height: 70vmin;
   border: 1vmin solid var(--emoji-yellow);
+  height: 70vmin;
   margin: 0 auto;
-  /* margin-bottom: 1rem; */
+  width: 70vmin;
 }
 
 .square {
   background: var(--hot-pink);
-  width: 7vmin;
   height: 7vmin;
+  width: 7vmin;
 }
 
 .snake {
   display: flex;
   justify-content: center;
   align-items: center;
+
   background: var(--happy-aqua);
 }
 
+/* apples are emojis */
 .apple {
   display: flex;
   justify-content: center;
   align-items: center;
+
   font-size: 6vmin;
 }
 
 .scoreboard {
-  margin-top: .5em;
   font-size: 6vmin
+  margin-top: .5em;
 }
 
 #score {
   color: var(--emoji-yellow);
 }
 
+/* design credit for background rainbow pattern */
 .attributions {
-  font-size: 12px;
   color: white;
+  font-size: 12px;
   z-index: -2;
-
 }
