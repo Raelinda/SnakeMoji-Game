@@ -1,7 +1,7 @@
 // store DOM-grabs in variables
 const grid = document.querySelector('.grid')
 const scoreBoard = document.getElementById('scoreboard')
-const scoreDisplay = document.getElementById('score')
+const currentScore = document.getElementById('currentScore')
 const startBtn = document.getElementById('startBtn')
 const upBtn = document.getElementById('upBtn')
 const downBtn = document.getElementById('downBtn')
@@ -23,8 +23,8 @@ let timerId = 0
 let score = 0
 let snakeSpeed = 800
 let speedIncrease = 0.9
-console.log(score)
-// create 100 divs/style/push into squares array
+
+// create 100 <div>'s/insert in grid/push into squares array
 function createGrid() {
     for (let i = 0; i < width * width; i++) {
         const square = document.createElement('div')
@@ -35,11 +35,9 @@ function createGrid() {
 }
 createGrid()
 
-//'create' snake/style snake
+//add snake styling to squares indexs that are in snake array
 currentSnake.forEach(index => {
     squares[index].classList.add('snake')
-    //inserting emojis into snake
-    // squares[index].textContent = '☹️'
 
 })
 // start/restart game
@@ -47,8 +45,6 @@ function startGame() {
     clearInterval(timerId)
     direction = 1
     score = 0
-    score.textContent = score
-    scoreBoard.textContent = "Score: "
     currentSnake.forEach(index => {
         squares[index].classList.remove('snake')
     })
@@ -94,23 +90,26 @@ function move() {
 
     //if snake eats emoji
     if (squares[head + direction].classList.contains('emoji')) {
-        squares[tail].classList.add('snake')
-        currentSnake.push(tail)
-        // currentSnake.push(tail)
+    //increase score/display new score    
         score++
-        scoreDisplay.textContent = score
+        currentScore.textContent = score
+ // remove 'eaten' emoji
         squares[emojiIndex].classList.remove('emoji')
         squares[emojiIndex].textContent = ' '
         generateEmoji()
+// add to tail
+        squares[tail].classList.add('snake')
+        currentSnake.push(tail)
+// increase snake speed
         clearInterval(timerId)
         snakeSpeed = snakeSpeed * speedIncrease
         timerId = setInterval(move, snakeSpeed)
     }
     // result of winning game
-    if (score === 12){
+    if (score === 11){
         clearInterval(timerId)
-        scoreBoard.textContent = ""
-        scoreDisplay.textContent = "YOU WON!!!!!"
+        // scoreBoard.textContent = ""
+        currentScore.textContent = "YOU WON!!!"
         startBtn.textContent = "Go again!"
         overlay.classList.remove('half-opacity')
         overlay.classList.add('no-opacity')
@@ -151,7 +150,7 @@ leftBtn.addEventListener('click', () =>{
     direction = -1
 })
 
-//generate random emojis
+//generate increasingly happy emojis
 function generateEmoji() {
     switch (score) {
         case 0:
@@ -190,6 +189,8 @@ function generateEmoji() {
             case 11:
             emoji = '🤩'
     }
+
+    
     do {
         emojiIndex = Math.floor(Math.random() * squares.length)
     }
@@ -197,3 +198,5 @@ function generateEmoji() {
     squares[emojiIndex].classList.add('emoji')
     squares[emojiIndex].textContent = emoji
 }
+
+
