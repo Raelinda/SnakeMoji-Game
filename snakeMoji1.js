@@ -78,9 +78,9 @@ generateEmoji()
 function move() {
     const head = currentSnake[0]
     // stop snake if snake hits wall or overlaps self
-    if ((head - width <= 0 && direction === -width) ||
-        (head % width === 9 && direction === 1) ||
-        (head + width > width * width && direction === width) ||
+    if ((head - width < 0 && direction === -width) ||
+        (head % width === width -1 && direction === 1) ||
+        (head + width >= width * width && direction === width) ||
         (head % width === 0 && direction === -1) ||
         (squares[head + direction].classList.contains('snake'))
     ) {
@@ -112,7 +112,7 @@ function move() {
         timerId = setInterval(move, snakeSpeed)
     }
     // result of winning game
-    if (score === 11){
+    if (score ===11){
         clearInterval(timerId)
         scoreBoard.textContent = ""
         currentScore.textContent = "YOU WON!!!"
