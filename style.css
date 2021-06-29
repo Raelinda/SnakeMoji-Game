@@ -149,7 +149,7 @@ body {
 }
 
 .no-opacity {
-  transition: opacity 2000ms linear;
+  transition: opacity 2500ms ease-out;
   opacity: 0;
 }
 /* layout */
@@ -279,11 +279,9 @@ h2 {
   justify-content: center;
   align-items: center;
   font-size: 6vmin;
-
-  
 }
 
-#scoreboard {
+#scoreBoard, #currentScore {
   font-size: 6vmin; 
   margin-top: .25em;
 }
@@ -319,7 +317,7 @@ h2 {
     font-size: 9vmin;
   }
   h2 {
-    font-size: 4vmin;
+    font-size: 5vmin;
     margin-left: 4em;
   }
   #startBtn {

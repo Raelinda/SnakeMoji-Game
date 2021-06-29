@@ -1,6 +1,6 @@
 // store DOM-grabs in variables
 const grid = document.querySelector('.grid')
-const scoreBoard = document.getElementById('scoreboard')
+const scoreBoard = document.getElementById('scoreBoard')
 const currentScore = document.getElementById('currentScore')
 const startBtn = document.getElementById('startBtn')
 const upBtn = document.getElementById('upBtn')
@@ -21,7 +21,7 @@ let direction = 1
 let emojiIndex = 0
 let timerId = 0
 let score = 0
-let snakeSpeed = 800
+let snakeSpeed = 500
 let speedIncrease = 0.9
 
 // create 100 <div>'s/insert in grid/push into squares array
@@ -43,8 +43,14 @@ currentSnake.forEach(index => {
 // start/restart game
 function startGame() {
     clearInterval(timerId)
+
+    overlay.classList.add('half-opacity')
+    overlay.classList.remove('no-opacity')
+    
     direction = 1
     score = 0
+    currentScore.textContent = score
+    scoreBoard.textContent = "Score: "
     currentSnake.forEach(index => {
         squares[index].classList.remove('snake')
     })
@@ -58,7 +64,7 @@ function startGame() {
     squares[emojiIndex].textContent = ''
     generateEmoji()
 
-    snakeSpeed = 1000
+    snakeSpeed = 500
     timerId = setInterval(move, snakeSpeed)
 }
 startBtn.addEventListener('click', startGame)
@@ -108,7 +114,7 @@ function move() {
     // result of winning game
     if (score === 11){
         clearInterval(timerId)
-        // scoreBoard.textContent = ""
+        scoreBoard.textContent = ""
         currentScore.textContent = "YOU WON!!!"
         startBtn.textContent = "Go again!"
         overlay.classList.remove('half-opacity')
@@ -120,7 +126,7 @@ function move() {
 move()
 
 //control snake direction with keyboard
-document.addEventListener('keyup', e => {
+document.addEventListener('keydown', e => {
     switch (e.key) {
         case 'ArrowUp':
             direction = -width
