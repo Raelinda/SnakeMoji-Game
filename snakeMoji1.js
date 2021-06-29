@@ -43,36 +43,37 @@ currentSnake.forEach(index => {
 // start/restart game
 function startGame() {
     clearInterval(timerId)
-
+// brings rainbow background back to half opacity
     overlay.classList.add('half-opacity')
     overlay.classList.remove('no-opacity')
-    
+    // resets score to default
     direction = 1
     score = 0
     currentScore.textContent = score
     scoreBoard.textContent = "Score: "
+// removes current snake
     currentSnake.forEach(index => {
         squares[index].classList.remove('snake')
     })
-
+// adds default snake
     currentSnake = [2, 1, 0]
     currentSnake.forEach(index => {
         squares[index].classList.add('snake')
     })
-
+// removes currently placed emoji/adds randomly placed emoji
     squares[emojiIndex].classList.remove('emoji')
     squares[emojiIndex].textContent = ''
     generateEmoji()
-
+// resets snake speed to default/activates timer
     snakeSpeed = 500
     timerId = setInterval(move, snakeSpeed)
 }
+// event listener to start/restart game
 startBtn.addEventListener('click', startGame)
 
-
+// renders a randomly placed, crying emoji
 generateEmoji()
 
-// clearInterval(timerId)
 
 //MOVE SNAKE
 function move() {
@@ -81,12 +82,19 @@ function move() {
     if ((head - width < 0 && direction === -width) ||
         (head % width === width -1 && direction === 1) ||
         (head + width >= width * width && direction === width) ||
-        (head % width === 0 && direction === -1) ||
-        (squares[head + direction].classList.contains('snake'))
+        (head % width === 0 && direction === -1) 
+    
     ) {
         startBtn.textContent = "Go again!"
+        currentScore.textContent = "Sorry, you hit wall."
+        scoreBoard.textContent = ""
         return clearInterval(timerId)
-        
+    }
+    if (squares[head + direction].classList.contains('snake')){
+        startBtn.textContent = "Go again!"
+        currentScore.textContent = "Sorry, overlapped."
+        scoreBoard.textContent = ""
+        return clearInterval(timerId)
     }
     //remove from tail/add to head
     const tail = currentSnake.pop()
