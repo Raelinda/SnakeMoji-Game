@@ -149,6 +149,7 @@ body {
 }
 
 .no-opacity {
+  transition: opacity 2000ms linear;
   opacity: 0;
 }
 /* layout */
