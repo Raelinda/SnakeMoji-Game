@@ -230,8 +230,8 @@ h2 {
   width: 10vmin;
 }
 
-#startBtn:hover,
-.directional-btn:hover {
+#startBtn:active,
+.directional-btn:active {
   border: 3px solid white;
   box-shadow: 0 0 6px 1px hsla(360, 100%, 100%, .5) inset;
   color: white;
@@ -323,6 +323,13 @@ h2 {
   #startBtn {
     font-size: 3vmin;
   }
+  #startBtn:hover,
+.directional-btn:hover {
+  border: 3px solid white;
+  box-shadow: 0 0 6px 1px hsla(360, 100%, 100%, .5) inset;
+  color: white;
+  cursor: pointer;
+}
   .game {
     margin: 0 auto 2vmin;
   padding: 2vmin;
