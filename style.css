@@ -427,7 +427,7 @@ header {
     height: 6vmin;
   }
 
-  .scoreboard {
+  #scoreBoard, #currentScore {
     font-size: 4vmin;
   }
   .emoji {
