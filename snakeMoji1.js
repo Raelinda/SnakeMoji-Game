@@ -168,19 +168,7 @@ leftBtn.addEventListener('click', () => {
     direction = -1
 })
 
-// control snake direction with buttons - mobile
-upBtnTablet.addEventListener('click', () => {
-    direction = -width
-})
-rightBtnTablet.addEventListener('click', () => {
-    direction = 1
-})
-downBtnTablet.addEventListener('click', () => {
-    direction = width
-})
-leftBtnTablet.addEventListener('click', () => {
-    direction = -1
-})
+
 
 //generate increasingly happy emojis in random locations
 function generateEmoji() {
