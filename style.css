@@ -335,6 +335,10 @@ header {
     display: none;
   }
 
+  #downBtnTablet, #rightBtnTablet {
+    margin-left: .05em;
+  }
+
 }
 
 
