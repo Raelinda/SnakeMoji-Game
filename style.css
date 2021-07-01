@@ -201,7 +201,7 @@ h2 {
   justify-content: center;
 }
 
-#startBtn {
+#startBtn, startBtn:visited {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -216,7 +216,7 @@ h2 {
   height: 12vmin;
 }
 
-.directional-btn {
+.directional-btn, .directional-btn:visited {
   display: flex;
   justify-content: center;
   align-items: center;
