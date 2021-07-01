@@ -4,9 +4,13 @@ const scoreBoard = document.getElementById('scoreBoard')
 const currentScore = document.getElementById('currentScore')
 const startBtn = document.getElementById('startBtn')
 const upBtn = document.getElementById('upBtn')
+const upBtnTablet = document.getElementById('upBtnTablet')
 const downBtn = document.getElementById('downBtn')
+const downBtnTablet = document.getElementById('downBtnTablet')
 const leftBtn = document.getElementById('leftBtn')
+const leftBtnTablet = document.getElementById('leftBtnTablet')
 const rightBtn = document.getElementById('rightBtn')
+const rightBtnTablet = document.getElementById('rightBtnTablet')
 const overlay = document.getElementById('overlay')
 
 //grid and snake arrays
@@ -150,7 +154,7 @@ document.addEventListener('keydown', e => {
             break
     }
 })
-// control snake direction with buttons
+// control snake direction with buttons - desktop
 upBtn.addEventListener('click', () => {
     direction = -width
 })
@@ -161,6 +165,20 @@ downBtn.addEventListener('click', () => {
     direction = width
 })
 leftBtn.addEventListener('click', () => {
+    direction = -1
+})
+
+// control snake direction with buttons - mobile
+upBtnTablet.addEventListener('click', () => {
+    direction = -width
+})
+rightBtnTablet.addEventListener('click', () => {
+    direction = 1
+})
+downBtnTablet.addEventListener('click', () => {
+    direction = width
+})
+leftBtnTablet.addEventListener('click', () => {
     direction = -1
 })
 

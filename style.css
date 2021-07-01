@@ -239,6 +239,14 @@ header {
   width: 14vmin;
 }
 
+#startBtn:hover, #startBtn:active,
+.directional-btn:hover, .directional-btn:active{
+  border: 3px solid white;
+  box-shadow: 0 0 6px 1px hsla(360, 100%, 100%, .5) inset;
+  color: white;
+  cursor: pointer;
+}
+
 
 
 /* Game */
