@@ -128,7 +128,6 @@ function move() {
         startBtn.textContent = "Go again!"
         overlay.classList.remove('half-opacity')
         overlay.classList.add('no-opacity')
-
     }
 
 }
