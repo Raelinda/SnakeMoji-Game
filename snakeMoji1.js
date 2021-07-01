@@ -98,7 +98,9 @@ function move() {
             scoreBoard.textContent = "You made it all the way to "
             currentScore.textContent = `${score}!`
         }
+        startBtn.textContent = "Go again!"
         return clearInterval(timerId)
+        
     }
 
     //remove from tail/add to head
