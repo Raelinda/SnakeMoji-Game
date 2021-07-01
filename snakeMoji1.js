@@ -43,7 +43,7 @@ currentSnake.forEach(index => {
 // start/restart game
 function startGame() {
     clearInterval(timerId)
-// brings rainbow background back to half opacity
+    // brings rainbow background back to half opacity
     overlay.classList.add('half-opacity')
     overlay.classList.remove('no-opacity')
     // resets score to default
@@ -51,20 +51,20 @@ function startGame() {
     score = 0
     currentScore.textContent = score
     scoreBoard.textContent = "Score: "
-// removes current snake
+    // removes current snake
     currentSnake.forEach(index => {
         squares[index].classList.remove('snake')
     })
-// adds default snake
+    // adds default snake
     currentSnake = [2, 1, 0]
     currentSnake.forEach(index => {
         squares[index].classList.add('snake')
     })
-// removes currently placed emoji/adds randomly placed emoji
+    // removes currently placed emoji/adds randomly placed emoji
     squares[emojiIndex].classList.remove('emoji')
     squares[emojiIndex].textContent = ''
     generateEmoji()
-// resets snake speed to default/activates timer
+    // resets snake speed to default/activates timer
     snakeSpeed = 500
     timerId = setInterval(move, snakeSpeed)
 }
@@ -80,22 +80,23 @@ function move() {
     const head = currentSnake[0]
     // stop snake if snake hits wall or overlaps self
     if ((head - width < 0 && direction === -width) ||
-        (head % width === width -1 && direction === 1) ||
+        (head % width === width - 1 && direction === 1) ||
         (head + width >= width * width && direction === width) ||
-        (head % width === 0 && direction === -1) 
-    
+        (head % width === 0 && direction === -1) ||
+        (squares[head + direction].classList.contains('snake'))
+
     ) {
-        startBtn.textContent = "Go again!"
-        currentScore.textContent = "Sorry, you hit wall."
-        scoreBoard.textContent = ""
+        // displays encouraging message at non-winning score
+        if (score < 4) {
+            scoreBoard.style.fontStyle = "italic"
+            scoreBoard.textContent = "Good try.   Score: "
+        } else {
+            scoreBoard.textContent = "You made it all the way to "
+            currentScore.textContent = `${score}!`
+        }
         return clearInterval(timerId)
     }
-    if (squares[head + direction].classList.contains('snake')){
-        startBtn.textContent = "Go again!"
-        currentScore.textContent = "Sorry, overlapped."
-        scoreBoard.textContent = ""
-        return clearInterval(timerId)
-    }
+
     //remove from tail/add to head
     const tail = currentSnake.pop()
     squares[tail].classList.remove('snake')
@@ -104,23 +105,23 @@ function move() {
 
     //if snake eats emoji
     if (squares[head + direction].classList.contains('emoji')) {
-    //increase score/display new score    
+        //increase score/display new score    
         score++
         currentScore.textContent = score
- // remove 'eaten' emoji
+        // remove 'eaten' emoji
         squares[emojiIndex].classList.remove('emoji')
         squares[emojiIndex].textContent = ' '
         generateEmoji()
-// add to tail
+        // add to tail
         squares[tail].classList.add('snake')
         currentSnake.push(tail)
-// increase snake speed
+        // increase snake speed
         clearInterval(timerId)
         snakeSpeed = snakeSpeed * speedIncrease
         timerId = setInterval(move, snakeSpeed)
     }
     // result of winning game
-    if (score ===11){
+    if (score === 11) {
         clearInterval(timerId)
         scoreBoard.textContent = ""
         currentScore.textContent = "YOU WON!!!"
@@ -151,20 +152,20 @@ document.addEventListener('keydown', e => {
     }
 })
 // control snake direction with buttons
-upBtn.addEventListener('click', () =>{
+upBtn.addEventListener('click', () => {
     direction = -width
 })
-rightBtn.addEventListener('click', () =>{
+rightBtn.addEventListener('click', () => {
     direction = 1
 })
-downBtn.addEventListener('click', () =>{
+downBtn.addEventListener('click', () => {
     direction = width
 })
-leftBtn.addEventListener('click', () =>{
+leftBtn.addEventListener('click', () => {
     direction = -1
 })
 
-//generate increasingly happy emojis
+//generate increasingly happy emojis in random locations
 function generateEmoji() {
     switch (score) {
         case 0:
@@ -176,7 +177,7 @@ function generateEmoji() {
         case 2:
             emoji = '🙂'
             break
-            case 3:
+        case 3:
             emoji = '😊'
             break
         case 4:
@@ -185,10 +186,10 @@ function generateEmoji() {
         case 5:
             emoji = '😃'
             break
-            case 6:
+        case 6:
             emoji = '😄'
             break
-            case 7:
+        case 7:
             emoji = '😁'
             break
         case 8:
@@ -197,14 +198,13 @@ function generateEmoji() {
         case 9:
             emoji = '😂'
             break
-            case 10:
+        case 10:
             emoji = '🤣'
             break
-            case 11:
+        case 11:
             emoji = '🤩'
     }
 
-    
     do {
         emojiIndex = Math.floor(Math.random() * squares.length)
     }
@@ -212,5 +212,4 @@ function generateEmoji() {
     squares[emojiIndex].classList.add('emoji')
     squares[emojiIndex].textContent = emoji
 }
-
 
