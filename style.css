@@ -422,6 +422,9 @@ header {
   .scoreboard {
     font-size: 4vmin;
   }
+  .emoji {
+    font-size: 5vmin;
+  }
 }
 
 /* design credit for background rainbow pattern */
